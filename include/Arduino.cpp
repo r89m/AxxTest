@@ -29,9 +29,9 @@ int analogRead(int pin){
 	return pin_analog_read[pin];
 }
 
-void digitalWrite(int pin, int value){
+void digitalWrite(int pin, int state){
 	
-	pin_digital_write[pin] = value;
+	pin_digital_write[pin] = state;
 }
 
 int digitalRead(int pin){
@@ -47,9 +47,9 @@ void AxxTest_millis(uint32_t new_value){
 	fake_millis_value = new_value;
 }
 
-void AxxTest_digitalRead(int pin, int value){
+void AxxTest_digitalRead(int pin, int state){
 	
-	pin_digital_read[pin] = value;
+	pin_digital_read[pin] = state;
 }
 
 void AxxTest_analogRead(int pin, int value){
