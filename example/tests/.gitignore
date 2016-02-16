@@ -1,0 +1,8 @@
+*.gcov
+*.gcno
+*.gcda
+*.o
+
+cxxtest-4.4/
+axxtest/
+runners/
