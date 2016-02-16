@@ -17,7 +17,7 @@ In its current form it allows testing of pure C++ code as well as code making us
 * `SerialUSB`
 
 ## Setup
-This framework requires `make` and `g++`. Please see the [example project's](example) setup instructions for details.
+This framework requires `make` and `g++`. Please see the [example project's](example/tests) setup instructions for details.
 
 
 ## Assert Methods
@@ -39,4 +39,4 @@ Several `AxxTest_` prefixed methods are provided to allow dummy values to be pro
 * `AxxTest_analogRead(pin, value)` - set the value of an analog pin that will be read later by the code under test.
 
 ## Example
-Please see the [example project](example) to see how tests can be implemented to verify the functioning of your code that uses the above methods.
+Please see the [example project](example/tests) to see how tests can be implemented to verify the functioning of your code that uses the above methods.
