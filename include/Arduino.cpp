@@ -1,5 +1,25 @@
 #include "Arduino.h"
+#include "IArduinoHardware.h"
+#include "fakeit.hpp"
 
+using namespace fakeit;
+//using fakeit::When;
+//using fakeit::Method;
+//using fakeit::Return;
+
+IArduinoHardware arduino;
+
+void init_arduino_mock(){
+
+	Mock<IArduinoHardware> ArduinoHardwareMock;
+
+	arduino = ArduinoHardwareMock.get();
+	
+	When(Method(ArduinoHardwareMock, digitalRead)).Return(1);
+	
+	std::cout << "Init called" << std::endl;
+	
+}
 
 uint32_t fake_millis_value = 0;
 
@@ -32,9 +52,13 @@ int analogRead(int pin){
 void digitalWrite(int pin, int state){
 	
 	pin_digital_write[pin] = state;
+	
+	std::cout << "Digital read: " << pin << ":" << state << std::endl;
 }
 
 int digitalRead(int pin){
+	
+	std::cout << "Digital read: " << pin;
 	
 	return pin_digital_read[pin];
 }

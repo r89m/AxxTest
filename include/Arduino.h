@@ -14,6 +14,9 @@
 #include "avr-implementations/itoa.h"
 #include "avr-implementations/strtok_r.h"
 
+void init_arduino_mock();
+
+
 void yield(void);
 
 #define HIGH 0x1
