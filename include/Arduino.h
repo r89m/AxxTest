@@ -11,6 +11,9 @@
 //#include <string.h>
 #include <math.h>
 
+#include "avr-implementations/itoa.h"
+#include "avr-implementations/strtok_r.h"
+
 void yield(void);
 
 #define HIGH 0x1
