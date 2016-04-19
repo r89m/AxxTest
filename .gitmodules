@@ -1,0 +1,3 @@
+[submodule "example/tests/AxxTest"]
+	path = example/tests/AxxTest
+	url = https://github.com/r89m/AxxTest.git

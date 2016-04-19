@@ -13,6 +13,7 @@ class ExampleLibTests : public CxxTest::TestSuite{
             
             // This is called before each test.
             // Use it to initialise any variables or objects you might need
+			AxxTest::initialiseArduinoMock();
         }
       
         void testAddition(){

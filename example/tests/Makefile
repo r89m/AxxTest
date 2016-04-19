@@ -1,7 +1,7 @@
 CC=g++
-CFLAGS= -c -std=c++11 -I axxtest -I cxxtest-4.4 -I ../
+CFLAGS= -c -std=c++11 -I AxxTest/include -I AxxTest/cxxtest-4.4 -I ../
 LDFLAGS=
-SOURCES=$(wildcard fakes/*.cpp) axxtest/Arduino.cpp
+SOURCES=$(wildcard fakes/*.cpp) AxxTest/include/Arduino.cpp AxxTest/include/AxxTest.cpp
 OBJECTS=$(SOURCES:.cpp=.o) ExampleLib.o
 
 
@@ -34,7 +34,7 @@ buildTestsExampleLib: unitUnderTest updateTestsExampleLib $(OBJECTS)
 updateTestsExampleLib: ExampleLibTests.h
 	@echo "Generate ExampleLibTests class"
 	@test -d runners || mkdir runners
-	@cxxtest-4.4/bin/cxxtestgen --error-printer -w "ExampleLibTests" -o runners/ExampleLibTests.cpp ExampleLibTests.h
+	@AxxTest/cxxtest-4.4/bin/cxxtestgen --error-printer -w "ExampleLibTests" -o runners/ExampleLibTests.cpp ExampleLibTests.h
 	@$(CC) $(CFLAGS) runners/ExampleLibTests.cpp
 	
 	
