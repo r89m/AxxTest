@@ -1,42 +1,20 @@
-#include "Arduino.h"
-#include "IArduinoHardware.h"
-#include "fakeit.hpp"
+#include "AxxTest.h"
 
-
-// TODO: mock.reset - probably need an AxxTest::TestSuite class
 // TODO: store digitalWrite, analogWrite, pinMode etc in ArduinoHardware class
 
-using namespace fakeit;
-
-IArduinoHardware* arduino;
-Mock<IArduinoHardware> ArduinoHardwareMock;
-
-void init_arduino_mock(){
-
-	arduino = &ArduinoHardwareMock.get();
-	
-	When(Method(ArduinoHardwareMock, pinMode)).AlwaysReturn();
-	When(Method(ArduinoHardwareMock, digitalRead)).AlwaysReturn(0);
-	When(Method(ArduinoHardwareMock, digitalWrite)).AlwaysReturn();
-	When(Method(ArduinoHardwareMock, analogRead)).AlwaysReturn(0);
-	When(Method(ArduinoHardwareMock, analogWrite)).AlwaysReturn();
-	When(Method(ArduinoHardwareMock, millis)).AlwaysReturn(0);
-	
-	std::cout << "Init called" << std::endl;
-}
+IArduinoHardware* ArduinoHardware;
+fakeit::Mock<IArduinoHardware> ArduinoHardwareMock;
 
 uint32_t fake_millis_value = 0;
 
 int pin_modes[TEST_PIN_COUNT];
 int pin_digital_write[TEST_PIN_COUNT];
-int pin_digital_read[TEST_PIN_COUNT];
 int pin_analog_write[TEST_PIN_COUNT];
-int pin_analog_read[TEST_PIN_COUNT];
 
 
 uint32_t millis(void){
 	
-	return arduino->millis();
+	return ArduinoHardware->millis();
 }
 
 void delay(uint32_t ms_delay){
@@ -47,29 +25,29 @@ void delay(uint32_t ms_delay){
 void pinMode(int pin, int mode){
 	
 	pin_modes[pin] = mode;
-	arduino->pinMode(pin, mode);
+	ArduinoHardware->pinMode(pin, mode);
 }
 
 void analogWrite(int pin, int value){
 	
 	pin_analog_write[pin] = value;
-	arduino->analogWrite(pin, value);
+	ArduinoHardware->analogWrite(pin, value);
 }
 
 int analogRead(int pin){
 	
-	return arduino->analogRead(pin);
+	return ArduinoHardware->analogRead(pin);
 }
 
 void digitalWrite(int pin, int state){
 	
 	pin_digital_write[pin] = state;
-	arduino->digitalWrite(pin, state);
+	ArduinoHardware->digitalWrite(pin, state);
 }
 
 int digitalRead(int pin){
 	
-	return arduino->digitalRead(pin);
+	return ArduinoHardware->digitalRead(pin);
 }
 
 

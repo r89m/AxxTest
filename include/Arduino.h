@@ -14,17 +14,6 @@
 #include "avr-implementations/itoa.h"
 #include "avr-implementations/strtok_r.h"
 
-#include "fakeit.hpp"
-#include "IArduinoHardware.h"
-
-
-extern IArduinoHardware* arduino;
-extern fakeit::Mock<IArduinoHardware> ArduinoHardwareMock;
-
-
-void init_arduino_mock();
-
-
 void yield(void);
 
 #define HIGH 0x1
@@ -76,9 +65,7 @@ int analogRead(int);
 #define TEST_PIN_COUNT 50
 extern int pin_modes[TEST_PIN_COUNT];
 extern int pin_digital_write[TEST_PIN_COUNT];
-extern int pin_digital_read[TEST_PIN_COUNT];
 extern int pin_analog_write[TEST_PIN_COUNT];
-extern int pin_analog_read[TEST_PIN_COUNT];
 
 void AxxTest_millis(uint32_t);
 void AxxTest_digitalRead(int, int);
