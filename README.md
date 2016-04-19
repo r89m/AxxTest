@@ -1,6 +1,6 @@
 # AxxTest
 
-AxxTest is a unit testing framework for Arduino and Arduino-compatible code.
+AxxTest is a unit testing framework for Arduino and Arduino-compatible code built upon the [CxxTest](http://cxxtest.com/) unit testing framework and the [FakeIt](https://github.com/eranpeer/FakeIt) Mocking Framework.
 
 ## Supported Hardware Features
 In its current form it allows testing of pure C++ code as well as code making use of simple I/O and built-in functions such as:
