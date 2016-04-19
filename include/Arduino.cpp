@@ -2,23 +2,27 @@
 #include "IArduinoHardware.h"
 #include "fakeit.hpp"
 
-using namespace fakeit;
-//using fakeit::When;
-//using fakeit::Method;
-//using fakeit::Return;
 
-IArduinoHardware arduino;
+// TODO: mock.reset - probably need an AxxTest::TestSuite class
+// TODO: store digitalWrite, analogWrite, pinMode etc in ArduinoHardware class
+
+using namespace fakeit;
+
+IArduinoHardware* arduino;
+Mock<IArduinoHardware> ArduinoHardwareMock;
 
 void init_arduino_mock(){
 
-	Mock<IArduinoHardware> ArduinoHardwareMock;
-
-	arduino = ArduinoHardwareMock.get();
+	arduino = &ArduinoHardwareMock.get();
 	
-	When(Method(ArduinoHardwareMock, digitalRead)).Return(1);
+	When(Method(ArduinoHardwareMock, pinMode)).AlwaysReturn();
+	When(Method(ArduinoHardwareMock, digitalRead)).AlwaysReturn(0);
+	When(Method(ArduinoHardwareMock, digitalWrite)).AlwaysReturn();
+	When(Method(ArduinoHardwareMock, analogRead)).AlwaysReturn(0);
+	When(Method(ArduinoHardwareMock, analogWrite)).AlwaysReturn();
+	When(Method(ArduinoHardwareMock, millis)).AlwaysReturn(0);
 	
 	std::cout << "Init called" << std::endl;
-	
 }
 
 uint32_t fake_millis_value = 0;
@@ -31,36 +35,41 @@ int pin_analog_read[TEST_PIN_COUNT];
 
 
 uint32_t millis(void){
-  return fake_millis_value;
+	
+	return arduino->millis();
+}
+
+void delay(uint32_t ms_delay){
+	
+	// Do nothing. Use the FakeIt mocking methods to cause millis to return different values
 }
 
 void pinMode(int pin, int mode){
 	
 	pin_modes[pin] = mode;
+	arduino->pinMode(pin, mode);
 }
 
 void analogWrite(int pin, int value){
 	
 	pin_analog_write[pin] = value;
+	arduino->analogWrite(pin, value);
 }
 
 int analogRead(int pin){
 	
-	return pin_analog_read[pin];
+	return arduino->analogRead(pin);
 }
 
 void digitalWrite(int pin, int state){
 	
 	pin_digital_write[pin] = state;
-	
-	std::cout << "Digital read: " << pin << ":" << state << std::endl;
+	arduino->digitalWrite(pin, state);
 }
 
 int digitalRead(int pin){
 	
-	std::cout << "Digital read: " << pin;
-	
-	return pin_digital_read[pin];
+	return arduino->digitalRead(pin);
 }
 
 
@@ -69,14 +78,15 @@ int digitalRead(int pin){
 void AxxTest_millis(uint32_t new_value){
 	
 	fake_millis_value = new_value;
+	When(Method(ArduinoHardwareMock, millis)).AlwaysReturn(new_value);
 }
 
 void AxxTest_digitalRead(int pin, int state){
 	
-	pin_digital_read[pin] = state;
+	When(Method(ArduinoHardwareMock, digitalRead).Using(pin)).AlwaysReturn(state);
 }
 
 void AxxTest_analogRead(int pin, int value){
 	
-	pin_analog_read[pin] = value;
+	When(Method(ArduinoHardwareMock, analogRead).Using(pin)).AlwaysReturn(value);
 }

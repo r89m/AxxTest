@@ -14,6 +14,14 @@
 #include "avr-implementations/itoa.h"
 #include "avr-implementations/strtok_r.h"
 
+#include "fakeit.hpp"
+#include "IArduinoHardware.h"
+
+
+extern IArduinoHardware* arduino;
+extern fakeit::Mock<IArduinoHardware> ArduinoHardwareMock;
+
+
 void init_arduino_mock();
 
 

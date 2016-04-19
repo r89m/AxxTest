@@ -6,12 +6,13 @@
 class IArduinoHardware{
 	
 	public:
-		virtual uint8_t digitalRead(uint8_t pin)=0;
-		virtual void digitalWrite(uint8_t pin, uint8_t state)=0;
-		virtual uint16_t analogRead(uint8_t pin)=0;
-		virtual void analogWrite(uint8_t pin, uint8_t pwm)=0;
+		virtual void pinMode(int pin, int mode)=0;
+		virtual int digitalRead(int pin)=0;
+		virtual void digitalWrite(int pin, int state)=0;
+		virtual int analogRead(int pin)=0;
+		virtual void analogWrite(int pin, int pwm)=0;
 		
-	
+		virtual uint32_t millis()=0;
 };
 
 #endif // _IARDUINOHARDWARE_H
