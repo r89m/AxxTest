@@ -1,4 +1,4 @@
-CC=g++
+CXX=g++
 CFLAGS= -c -std=c++11 -I ../include -I ../cxxtest-4.4 -I ../
 LDFLAGS=
 SOURCES=$(wildcard fakes/*.cpp) ../include/Arduino.cpp
@@ -15,7 +15,7 @@ test: testAxxTest
 # Build the Unit Under Test
 unitUnderTest: ../include/AxxTest.cpp ../include/AxxTest.h
 	@echo "Compile Unit Under Test"
-	@$(CC) $(CFLAGS) ../include/AxxTest.cpp
+	@$(CXX) $(CFLAGS) ../include/AxxTest.cpp
 	
 
 ###########################################
@@ -28,19 +28,19 @@ testAxxTest: buildTestsAxxTest
 
 buildTestsAxxTest: unitUnderTest updateTestsAxxTest $(OBJECTS)  
 	@echo "Build AxxTestTests"
-	@$(CC) $(LDFLAGS) $(OBJECTS) AxxTestTests.o -o runners/AxxTestTests.exe
+	@$(CXX) $(LDFLAGS) $(OBJECTS) AxxTestTests.o -o runners/AxxTestTests.exe
 	
 	
 updateTestsAxxTest: AxxTestTests.h
 	@echo "Generate AxxTestTests class"
 	@test -d runners || mkdir runners
 	@../cxxtest-4.4/bin/cxxtestgen --error-printer -w "AxxTestTests" -o runners/AxxTestTests.cpp AxxTestTests.h
-	@$(CC) $(CFLAGS) runners/AxxTestTests.cpp
+	@$(CXX) $(CFLAGS) runners/AxxTestTests.cpp
 	
 
 .cpp.o:
 	@echo "Compile source ($<)"
-	@$(CC) $(CFLAGS) $< -o $@
+	@$(CXX) $(CFLAGS) $< -o $@
 	
 clean:
 	rm */*.o
