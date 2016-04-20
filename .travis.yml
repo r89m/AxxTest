@@ -1,5 +1,7 @@
 language: cpp
 
+sudo: required
+
 addons:
     apt:
         sources:
@@ -8,6 +10,9 @@ addons:
             - gcc-4.8
             - g++-4.8
 
+before_install:
+    - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
+            
 script:
     - cd tests
     - make test
