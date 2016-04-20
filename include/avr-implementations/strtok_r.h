@@ -1,5 +1,8 @@
-#ifndef STRTOK_R_
-#define STRTOK_R_
+#ifndef _STRTOK_R_H
+#define _STRTOK_R_H
+
+// Check that a system version of the string functions hasn't already been declared
+#ifndef _STRING_H
 
 /* 
  * public domain strtok_r() by Charlie Gordon
@@ -45,4 +48,5 @@ static char* strtok_r(
     return ret;
 }
 
-#endif // STRTOK_R_
+#endif // _STRING_H
+#endif // _STRTOK_R_H
