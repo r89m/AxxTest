@@ -17,3 +17,8 @@ before_install:
 script:
     - cd tests
     - make test
+      
+notifications:
+  email:
+    on_success: change
+    on_failure: change
