@@ -1,6 +1,6 @@
 CXX=g++
-CFLAGS= -c -std=c++11 -I ../include -I ../cxxtest-4.4 -I ../
-LDFLAGS=
+CFLAGS= -c -std=c++11 --coverage -I ../include -I ../cxxtest-4.4 -I ../
+LDFLAGS=--coverage
 SOURCES=$(wildcard fakes/*.cpp) ../include/Arduino.cpp
 OBJECTS=$(SOURCES:.cpp=.o) AxxTest.o
 
