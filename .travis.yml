@@ -12,6 +12,7 @@ addons:
 
 before_install:
     - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
+    - chmod +x cxxtest4.4/bin/cxxtestgen
             
 script:
     - cd tests
