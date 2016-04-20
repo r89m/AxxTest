@@ -1,6 +1,6 @@
 language: cpp
 
-+addons:
+addons:
     apt:
         sources:
             - ubuntu-toolchain-r-test
