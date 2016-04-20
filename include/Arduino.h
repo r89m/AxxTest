@@ -56,6 +56,7 @@ void yield(void);
 #endif
 
 uint32_t millis(void);
+void delay(uint32_t ms_delay);
 void pinMode(int, int);
 void analogWrite(int, int);
 void digitalWrite(int, int);
