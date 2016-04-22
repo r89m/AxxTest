@@ -32,7 +32,12 @@ before_script:
     - lcov --directory . --zerocounters
             
 script:
-    - cd tests
+    # Run library tests
+    - cd ${TRAVIS_BUILD_DIR}/tests
+    - make test
+    
+    # Run example tests
+    - cd ${TRAVIS_BUILD_DIR}/example/tests
     - make test
     
 after_success:
