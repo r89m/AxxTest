@@ -14,7 +14,6 @@ addons:
 
 before_install:
     - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
-    - chmod +x cxxtest-4.4/bin/cxxtestgen
     
 install:
     # install latest LCOV (1.9 was failing)
@@ -32,7 +31,12 @@ before_script:
     - lcov --directory . --zerocounters
             
 script:
-    - cd tests
+    # Run library tests
+    - cd ${TRAVIS_BUILD_DIR}/tests
+    - make test
+    
+    # Run example tests
+    - cd ${TRAVIS_BUILD_DIR}/example/tests
     - make test
     
 after_success:
