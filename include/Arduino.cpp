@@ -17,9 +17,19 @@ uint32_t millis(void){
 	return ArduinoHardware->millis();
 }
 
+uint32_t micros(void){
+    
+    return ArduinoHardware->micros();
+}
+
 void delay(uint32_t ms_delay){
 	
 	// Do nothing. Use the FakeIt mocking methods to cause millis to return different values
+}
+
+void delayMicroseconds(uint32_t micro_delay){
+    
+    // Do nothing. Use the FakeIt mocking methods to cause micros to return different values
 }
 
 void pinMode(int pin, int mode){

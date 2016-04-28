@@ -16,6 +16,7 @@ namespace AxxTest{
 		When(Method(ArduinoHardwareMock, analogRead)).AlwaysReturn(0);
 		When(Method(ArduinoHardwareMock, analogWrite)).AlwaysReturn();
 		When(Method(ArduinoHardwareMock, millis)).AlwaysReturn(0);
+		When(Method(ArduinoHardwareMock, micros)).AlwaysReturn(0);
 		
 		// Reset the hardware variables - digitalWrite, analogWrite and pinMode
 		for(int pin = 0; pin < TEST_PIN_COUNT; pin++){

@@ -13,6 +13,7 @@ class IArduinoHardware{
 		virtual void analogWrite(int pin, int pwm)=0;
 		
 		virtual uint32_t millis()=0;
+        virtual uint32_t micros()=0;
 };
 
 #endif // _IARDUINOHARDWARE_H
