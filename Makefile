@@ -3,7 +3,7 @@ TEST_DIR=$(PWD)/tests
 CXX=g++
 CFLAGS= -c -std=c++11 --coverage -fprofile-arcs -g -I $(PWD)/include -I $(PWD)/cxxtest-4.4 -I $(PWD)
 LDFLAGS=--coverage -fprofile-arcs
-SOURCES=$(TEST_DIR)/include/Arduino.cpp $(TEST_DIR)/include/AxxTest.cpp
+SOURCES=$(TEST_DIR)/include/AxxTest.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 
 
