@@ -16,7 +16,6 @@ before_install:
     # Setup Test Environment
     - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
     - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.8 90
-    - chmod +x ${TRAVIS_BUILD_DIR}/tests/AxxTest/cxxtest-4.4/bin/cxxtestgen
   
     # Install coveralls
     - pip install --user cpp-coveralls
@@ -32,7 +31,7 @@ script:
     - make test
   
     # Upload code coverage report
-    - coveralls --exclude tests/ --exclude examples/ --gcov-options '\-lp'
+    - coveralls --exclude tests/ --exclude example/ --exclude cxxtest-4.4 --gcov-options '\-lp'
     
     # Run example tests
     # - cd ${TRAVIS_BUILD_DIR}/example/tests
