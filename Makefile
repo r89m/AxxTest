@@ -15,7 +15,7 @@ test: testAxxTest
 	
 	
 # Build the Unit Under Test
-unitUnderTest: ../include/AxxTest.cpp ../include/AxxTest.h
+unitUnderTest: $(PWD)/include/AxxTest.cpp $(PWD)/include/AxxTest.h
 	@echo "Compile Unit Under Test"
 	@$(CXX) $(CFLAGS) $(PWD)include/AxxTest.cpp -o $(PWD)/MQTTSwitch.o
 	
