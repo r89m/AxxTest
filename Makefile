@@ -37,7 +37,7 @@ updateTestsAxxTest: $(TEST_DIR)/AxxTestTests.h
 	@echo "Generate AxxTestTests class"
 	@test -d $(TEST_DIR)/runners || mkdir $(TEST_DIR)/runners
 	@$(PWD)/cxxtest-4.4/bin/cxxtestgen --error-printer -w "AxxTestTests" -o $(TEST_DIR)/runners/AxxTestTests.cpp $(TEST_DIR)/AxxTestTests.h
-	@$(CXX) $(CFLAGS) $(TEST_DIR)/runners/AxxTestTests.cpp
+	@$(CXX) $(CFLAGS) $(TEST_DIR)/runners/AxxTestTests.cpp - $(TEST_DIR)/runners/AxxTestTests.o
 	
 
 .cpp.o:
