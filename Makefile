@@ -1,7 +1,7 @@
 PWD=$(realpath ./)
 TEST_DIR=$(PWD)/tests
 CXX=g++
-CFLAGS= -c -std=c++11 --coverage -fprofile-arcs -g -I ../include -I ../cxxtest-4.4 -I ../
+CFLAGS= -c -std=c++11 --coverage -fprofile-arcs -g -I $(PWD)/include -I $(PWD)/cxxtest-4.4 -I $(PWD)
 LDFLAGS=--coverage -fprofile-arcs
 SOURCES=$(wildcard $(TEST_DIR)/fakes/*.cpp) $(TEST_DIR)/AxxTest/include/Arduino.cpp
 OBJECTS=$(SOURCES:.cpp=.o) $(PWD)/AxxTest.o
