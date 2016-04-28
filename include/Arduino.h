@@ -56,12 +56,19 @@ void yield(void);
 #endif
 
 uint32_t millis(void);
+uint32_t micros(void);
 void delay(uint32_t ms_delay);
+void delayMicroseconds(uint32_t micros_delay);
 void pinMode(int, int);
 void analogWrite(int, int);
 void digitalWrite(int, int);
 int digitalRead(int);
 int analogRead(int);
+
+// WMath prototypes
+long random(long);
+long random(long, long);
+void randomSeed(unsigned long);
 
 #define TEST_PIN_COUNT 50
 extern int pin_modes[TEST_PIN_COUNT];

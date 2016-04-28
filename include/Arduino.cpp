@@ -38,6 +38,11 @@ void pinMode(int pin, int mode){
 	ArduinoHardware->pinMode(pin, mode);
 }
 
+void analogReference(uint8_t mode){
+	
+	ArduinoHardware->analogReference(mode);
+}
+
 void analogWrite(int pin, int value){
 	
 	pin_analog_write[pin] = value;
@@ -58,6 +63,21 @@ void digitalWrite(int pin, int state){
 int digitalRead(int pin){
 	
 	return ArduinoHardware->digitalRead(pin);
+}
+
+long random(long max){
+	
+	return ArduinoHardware->random(max);
+}
+
+long random(long min, long max){
+	
+	return ArduinoHardware->random(min, max);
+}
+
+void randomSeed(long seed){
+	
+	ArduinoHardware->randomSeed(seed);
 }
 
 
