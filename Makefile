@@ -35,7 +35,7 @@ buildTestsAxxTest: unitUnderTest updateTestsAxxTest $(OBJECTS)
 	
 updateTestsAxxTest: $(TEST_DIR)/AxxTestTests.h
 	@echo "Generate AxxTestTests class"
-	@test -d $(TEST_DIR)/runners || $(TEST_DIR)/mkdir runners
+	@test -d $(TEST_DIR)/runners || mkdir $(TEST_DIR)/runners
 	@$(PWD)/cxxtest-4.4/bin/cxxtestgen --error-printer -w "AxxTestTests" -o $(TEST_DIR)/runners/AxxTestTests.cpp $(TEST_DIR)/AxxTestTests.h
 	@$(CXX) $(CFLAGS) $(TEST_DIR)/runners/AxxTestTests.cpp
 	
